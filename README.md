@@ -39,7 +39,7 @@ A Kotlin `Iterable` of any arity `Tuple`s can be sequenced as follows:
     val tupleOfSeqs: Tuple2<Seq<Int>, Seq<String>> = listOf(tuple(1, "2"), tuple(3, "4")).sequence()
 ```
 
-> - Kotlin `Iterable`s are type alises for Java `Iterable`s 
+> - Kotlin `Iterable`s are type aliases for Java `Iterable`s 
 > - everything in Javaslang derives from `Value`, which is a Java `Iterable`
 > - ergo, everything in Javaslang is a Kotlin `Iterable`
 
@@ -79,7 +79,7 @@ Kotlin has first-class nullables, so the `Option` constructor can be null-aware:
 
 A Kotlin `Iterable` of `Option`s can be sequenced as follows:
 ```kotlin
-    val optionOfList: Option<Seq<Int>> = listOf(option(1), option(null)).sequence()
+    val optionOfSeq: Option<Seq<Int>> = listOf(option(1), option(null)).sequence()
 ```
 
 ## Try
@@ -101,5 +101,35 @@ A lambda can be `Try`'d as follows:
 
 A Kotlin `Iterable` of `Try`s can be sequenced as follows: 
 ```kotlin
-   val tryOfSeqs: Try<Seq<Int>> = listOf(success(1), failure(java.lang.NumberFormatException())).sequence()
+   val tryOfSeqs: Try<Seq<Int>> = listOf(success(1), failure(NumberFormatException())).sequence()
+```
+
+## Validation
+An ad-hoc validation can be created the usual way:
+```kotlin
+    val invalid: Validation<Tuple2<Int, Int>, String> = invalid("your value sucks")
+    val valid: Validation<Tuple2<Int, Int>, String> = valid(tuple(7, 11))
+```
+
+A Kotlin `Iterable` of `Validation`s can be sequenced as follows:
+```kotlin
+    val validOfSeq: Validation<List<Int>, Seq<String>> = listOf(valid(1), invalid("not one at all")).sequence()
+```
+
+## Either
+An ad-hoc `Either` can be created the usual way:
+```kotlin
+    val left: Either<Int, String> = left("wrong")
+    val right: Either<Int, String> = right(1)
+```
+
+An `Either` can be converted into a `Validation`:
+```kotlin
+    val valid: Validation<Int, String> = right(1).validation()
+    val invalid: Validation<Int, String> = left("your value still sucks").validation()
+```
+
+A Kotlin `Iterable` of `Either`s can be sequenced as follows:
+```kotlin
+    val eitherOfSeq: Either<List<Int>, Seq<String>> = listOf(left("still does", right(1))).sequence() 
 ```

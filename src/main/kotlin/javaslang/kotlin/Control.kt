@@ -41,6 +41,32 @@ fun <A> Boolean.option(a: () -> A):
 fun <T> Iterable<Option<T>>.sequence():
         Option<Seq<T>> = Option.sequence(this)
 
+
+/**
+ *
+ */
+fun <A, B> invalid(a: A):
+        Validation<A, B> = Validation.invalid(a)
+
+/**
+ *
+ */
+fun <A, B> valid(b: B):
+        Validation<A, B> = Validation.valid(b)
+
+
+/**
+ *
+ */
+fun <A, B> left(a: A):
+        Either<A, B> = Either.left(a)
+
+/**
+ *
+ */
+fun <A, B> right(b: B):
+        Either<A, B> = Either.right(b)
+
 /**
  *
  */
