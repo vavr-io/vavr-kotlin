@@ -1,37 +1,49 @@
+/*     / \____  _    _  ____   ______  / \ ____  __    _______
+ *    /  /    \/ \  / \/    \ /  /\__\/  //    \/  \  //  /\__\   JΛVΛSLΛNG
+ *  _/  /  /\  \  \/  /  /\  \\__\\  \  //  /\  \ /\\/ \ /__\ \   Copyright 2014-2017 Javaslang, http://javaslang.io
+ * /___/\_/  \_/\____/\_/  \_/\__\/__/\__\_/  \_//  \__/\_____/   Licensed under the Apache License, Version 2.0
+ */
+
 @file:Suppress("unused")
 
-package io.javaslang.kotlin
+package javaslang.kotlin
 
 import javaslang.*
 import javaslang.collection.HashMap
+import javaslang.collection.List
 import javaslang.collection.Seq
+import javaslang.collection.Stream
+
+fun main(args: Array<String>) {
+    true.option { -> "a" }
+}
 
 /**
  * List
  */
 
-fun <T> Value<T>.toKotlinList():
+fun <T> Value<T>.toMutableList():
         MutableList<T> = this.toJavaList().toMutableList()
 
 fun <T> list(vararg t: T):
-        javaslang.collection.List<T> = javaslang.collection.List.of(*t)
+        List<T> = List.of(*t)
 
-fun <T> kotlin.collections.Iterable<T>.toJavaslangList():
-        javaslang.collection.List<T> = javaslang.collection.List.ofAll(this)
+fun <T> Iterable<T>.toJsList():
+        List<T> = List.ofAll(this)
 
 //  TODO: specialized array constructors
 
-/**
+/*
  * Stream
  */
 
 fun <T> stream(vararg t: T):
-        javaslang.collection.Stream<T> = javaslang.collection.Stream.of(*t)
+        Stream<T> = Stream.of(*t)
 
-fun <T> kotlin.collections.Iterable<T>.toJavaslangStream():
-        javaslang.collection.Stream<T> = javaslang.collection.Stream.ofAll(this)
+fun <T> Iterable<T>.toJavaslangStream():
+        Stream<T> = Stream.ofAll(this)
 
-/**
+/*
  * Tuple
  */
 

@@ -1,6 +1,12 @@
+/*     / \____  _    _  ____   ______  / \ ____  __    _______
+ *    /  /    \/ \  / \/    \ /  /\__\/  //    \/  \  //  /\__\   JΛVΛSLΛNG
+ *  _/  /  /\  \  \/  /  /\  \\__\\  \  //  /\  \ /\\/ \ /__\ \   Copyright 2014-2017 Javaslang, http://javaslang.io
+ * /___/\_/  \_/\____/\_/  \_/\__\/__/\__\_/  \_//  \__/\_____/   Licensed under the Apache License, Version 2.0
+ */
+
 @file:Suppress("unused")
 
-package io.javaslang.kotlin
+package javaslang.kotlin
 
 import javaslang.collection.List
 import javaslang.collection.Seq
@@ -12,34 +18,61 @@ import javaslang.control.Try
 import javaslang.control.Validation
 
 /**
- * Option
+ *
  */
-
 fun <A> A?.option():
         Option<A> = if (this == null) none() else some(this)
 
+/**
+ *
+ */
 fun <A> Boolean.option(a: A):
         Option<A> = if (this) some(a) else none()
 
+/**
+ *
+ */
 fun <A> Boolean.option(a: () -> A):
         Option<A> = if (this) some(a.invoke()) else none()
 
+/**
+ *
+ */
 fun <T> Iterable<Option<T>>.sequence():
         Option<Seq<T>> = Option.sequence(this)
 
 /**
- * Validation
+ *
  */
-
 fun <A, B> Either<A, B>.validation():
         Validation<A, B> = Validation.fromEither(this)
 
+/**
+ *
+ */
 fun <T1, T2> Iterable<Validation<List<T1>, T2>>.sequence():
         Validation<List<T1>, Seq<T2>> = Validation.sequence(this)
 
+/**
+ *
+ */
+fun <A> `try`(f: () -> A):
+        Try<A> = Try.of(f)
 
 /**
- * Try
+ *
+ */
+fun <A> success(a: A):
+        Try<A> = Try.success(a)
+
+/**
+ *
+ */
+fun <A> failure(t: Exception):
+        Try<A> = Try.failure(t)
+
+/**
+ *
  */
 fun <T> Iterable<Try<T>>.sequence():
         Try<Seq<T>> = Try.sequence(this)
