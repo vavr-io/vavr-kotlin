@@ -26,6 +26,18 @@ fun <A> A?.option():
 /**
  *
  */
+fun <A> some(a: A):
+        Option<A> = Option.some(a)
+
+/**
+ *
+ */
+fun <A> none():
+        Option<A> = Option.none()
+
+/**
+ *
+ */
 fun <A> Boolean.option(a: A):
         Option<A> = if (this) some(a) else none()
 

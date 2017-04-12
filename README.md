@@ -68,6 +68,12 @@ Kotlin has first-class nullables, so the `Option` constructor can be null-aware:
     val bonus: Some<Int> = option(1)
 ```
 
+An ad-hoc `Option` can also be created in the usual way:
+```kotlin
+    val none = none()
+    val some = some("well, there's that")
+```
+
 `Option`s can be predicated on a boolean value using a value or a factory method:
 ```kotlin
     val nada: None = false.option("Fabulous expression of beauty")
@@ -131,5 +137,5 @@ An `Either` can be converted into a `Validation`:
 
 A Kotlin `Iterable` of `Either`s can be sequenced as follows:
 ```kotlin
-    val eitherOfSeq: Either<List<Int>, Seq<String>> = listOf(left("still does", right(1))).sequence() 
+    val eitherOfSeq: Either<List<Int>, Seq<String>> = listOf(left("still does"), right(1)).sequence() 
 ```
