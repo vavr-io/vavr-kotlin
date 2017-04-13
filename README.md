@@ -1,14 +1,14 @@
-# Javaslang Kotlin
+# JΛVΛSLΛNG Kotlin
 
-Javaslang Kotlin is a set of Kotlin niceties for the Javaslang functional collections library.
+JΛVΛSLΛNG Kotlin is a set of Kotlin niceties for the Javaslang functional collections library.
 
 Niceties include:
-- factory methods with more unique names than `of`
+- factory methods with names more unique than `of`
 - extension methods as appropriate
 - conversions to and from Kotlin collections
 
 ## Usage
-Import Javaslang Kotlin as follows:
+Import JΛVΛSLΛNG Kotlin as follows:
 ```kotlin
     import javaslang.kotlin.*
 ```
@@ -23,11 +23,6 @@ Tuples can be made as follows:
     //  ... all the way to an 8-tuple
 ```
 
-One-tuples can also be created directly from any object:
-```kotlin
-    val oneTuple = 1.tuple()
-```
-
 Two-tuples can also be created from, and converted to Kotlin `Pair`s:
 ```kotlin
     val twoTuple = (1 to "2").tuple()
@@ -40,8 +35,8 @@ A Kotlin `Iterable` of any arity `Tuple`s can be sequenced as follows:
 ```
 
 > - Kotlin `Iterable`s are type aliases for Java `Iterable`s 
-> - everything in Javaslang derives from `Value`, which is a Java `Iterable`
-> - ergo, everything in Javaslang is a Kotlin `Iterable`
+> - everything in JΛVΛSLΛNG derives from `Value`, which is a Java `Iterable`
+> - ergo, everything in JΛVΛSLΛNG is a Kotlin `Iterable`
 
 ## List
 
@@ -139,3 +134,9 @@ A Kotlin `Iterable` of `Either`s can be sequenced as follows:
 ```kotlin
     val eitherOfSeq: Either<List<Int>, Seq<String>> = listOf(left("still does"), right(1)).sequence() 
 ```
+
+## Set
+> coming soon ...
+
+## Map
+> coming soon ...
