@@ -13,7 +13,7 @@ Import JΛVΛSLΛNG Kotlin as follows:
     import javaslang.kotlin.*
 ```
 
-## Tuple
+## Tuples
 
 Tuples can be made as follows:
 ```kotlin
@@ -34,11 +34,14 @@ A Kotlin `Iterable` of any arity `Tuple`s can be sequenced as follows:
     val tupleOfSeqs: Tuple2<Seq<Int>, Seq<String>> = listOf(tuple(1, "2"), tuple(3, "4")).sequence()
 ```
 
-> - Kotlin `Iterable`s are type aliases for Java `Iterable`s 
-> - everything in JΛVΛSLΛNG derives from `Value`, which is a Java `Iterable`
-> - ergo, everything in JΛVΛSLΛNG is a Kotlin `Iterable`
+> NOTE:
+> - the Kotlin `Iterable` is a type alias for the Java `Iterable` 
+> - the JΛVΛSLΛNG super-class `Value` is a Java `Iterable`
+> - ergo, _everything_ in JΛVΛSLΛNG is a Kotlin `Iterable`
 
-## List
+## Collections
+
+#### List
 
 An ad-hoc Javaslang list can be created as follows:
 ```kotlin
@@ -55,7 +58,47 @@ A Kotlin `Iterable` can be converted to a Javaslang `List`:
     val jsList = listOf(1, 2, 3).toJsList()
 ```
 
-## Option
+#### Set
+Ad-hoc Javaslang sets can be created as follows:
+```kotlin
+    val hashSet = hashSet(1, 2, 3)
+    val linkedHashSet = linkedHashSet("slow", "beige", "cat")
+    val treeSet = treeSet("this string", "is less than", "that string")
+```
+> NOTE: elements of a TreeSet must be Comparable
+
+A Javaslang Set can be converted to a Kotlin `MutableSet`:
+```kotlin
+    val mutableSet = hashSet(1, 2, 3).toMutableSet()
+```
+
+A Kotlin `Set` can be converted to a Javaslang `Set`:
+```kotlin
+    val jsList = listOf(1, 2, 3).toJsSet()
+```
+
+#### Map
+Ad-hoc Javaslang maps can be created as follows:
+```kotlin
+    val hashSet = hashMap(1 to 1, 2 to 2, 3 to 3)
+    val linkedHashMap = linkedHashMaphashMap(1 to "none", 2 to "a couple", 3 to "a lot")
+    val treeMap = treeMap("this string" to 1, "is less than" to 2, "that string" to 3)
+```
+> NOTE: keys in a TreeMap must be Comparable
+
+A Javaslang Map can be converted to a Kotlin `MutableMap`:
+```kotlin
+    val mutableMap = hashMap(1 to 1, 2 to 2, 3 to 3).toMutableMap()
+```
+
+A Kotlin `Map` can be converted to a Javaslang `Map`:
+```kotlin
+    val jsMap  = mapOf(1 to 1, 2 to 2, 3 to 3).toJsMap()
+```
+
+## Control Monads
+
+#### Option
 
 Kotlin has first-class nullables, so the `Option` constructor can be null-aware:
 ```kotlin
@@ -83,7 +126,7 @@ A Kotlin `Iterable` of `Option`s can be sequenced as follows:
     val optionOfSeq: Option<Seq<Int>> = listOf(option(1), option(null)).sequence()
 ```
 
-## Try
+#### Try
 An ad-hoc `Try` can be created the usual way:
 ```kotlin
     val succes = success(1)
@@ -105,7 +148,7 @@ A Kotlin `Iterable` of `Try`s can be sequenced as follows:
    val tryOfSeqs: Try<Seq<Int>> = listOf(success(1), failure(NumberFormatException())).sequence()
 ```
 
-## Validation
+#### Validation
 An ad-hoc validation can be created the usual way:
 ```kotlin
     val invalid: Validation<Tuple2<Int, Int>, String> = invalid("your value sucks")
@@ -117,7 +160,7 @@ A Kotlin `Iterable` of `Validation`s can be sequenced as follows:
     val validOfSeq: Validation<List<Int>, Seq<String>> = listOf(valid(1), invalid("not one at all")).sequence()
 ```
 
-## Either
+#### Either
 An ad-hoc `Either` can be created the usual way:
 ```kotlin
     val left: Either<Int, String> = left("wrong")
@@ -134,9 +177,3 @@ A Kotlin `Iterable` of `Either`s can be sequenced as follows:
 ```kotlin
     val eitherOfSeq: Either<List<Int>, Seq<String>> = listOf(left("still does"), right(1)).sequence() 
 ```
-
-## Set
-> coming soon ...
-
-## Map
-> coming soon ...

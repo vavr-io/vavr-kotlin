@@ -61,10 +61,16 @@ fun <T> Array<T>.toJsStream():
         Stream<T> = this.asIterable().toJsStream()
 
 /**
- * Converts a Kotlin Map into a Map
+ * Converts a Kotlin Map into a Javaslang Map
  */
 fun <K, V> kotlin.collections.Map<K, V>.toJsMap():
         javaslang.collection.Map<K, V> = javaslang.collection.HashMap.ofAll(this)
+
+/**
+ * Converts a Javaslang Map to a Kotlin MutableMap
+ */
+fun <K, V> javaslang.collection.Map<K, V>.toMutableMap():
+        kotlin.collections.MutableMap<K, V> = this.toJavaMap().toMutableMap()
 
 /**
  * Creates a Javaslang HashMap from a series of Kotlin Pairs
@@ -82,17 +88,23 @@ fun <K, V> linkedHashMap(vararg p: Pair<K, V>):
 
 /**
  * Creates a Javaslang TreeMap from a series of Kotlin Pairs.
- * Notice that keys in a TreeMap need to implement Comparable
+ * Notice that the keys of a TreeMap must be Comparable
  */
 fun <K : Comparable<K>, V> treeMap(vararg p: Pair<K, V>):
         javaslang.collection.TreeMap<K, V> =
         javaslang.collection.TreeMap.ofEntries(p.asIterable().map { it.tuple() })
 
 /**
- * Converts a Kotlin Set into a Set
+ * Converts a Kotlin Set into a Javaslang Set
  */
 fun <T> kotlin.collections.Set<T>.toJsSet():
         javaslang.collection.Set<T> = javaslang.collection.HashSet.ofAll(this)
+
+/**
+ * Converts a Javaslang Set into a Kotlin MutableSet
+ */
+fun <T> javaslang.collection.Set<T>.toMutableSet():
+        kotlin.collections.MutableSet<T> = this.toJavaSet().toMutableSet()
 
 /**
  * Creates a Javaslang HashSet
@@ -108,7 +120,7 @@ fun <T> linkedHashSet(vararg t: T):
 
 /**
  * Creates a Javaslang TreeSet.
- * Notice that members of a TreeSet need to implement Comparable
+ * Notice that the elements of a TreeSet must be Comparable
  */
 fun <T : Comparable<T>> treeSet(vararg t: T):
         javaslang.collection.TreeSet<T> =
