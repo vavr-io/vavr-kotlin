@@ -1,7 +1,7 @@
 # JΛVΛSLΛNG Kotlin
 
 JΛVΛSLΛNG Kotlin is a set of Kotlin niceties for the [JΛVΛSLΛNG](javaslang.io) functional collections library:
-- idiomatic constructors (with names more eloquent than `of`)
+- idiomatic factory methods
 - extension forms of `sequence`
 - conversions to and from Kotlin collections
 
