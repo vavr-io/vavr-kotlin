@@ -1,0 +1,21 @@
+plugins {
+    id 'jvm-component'
+    id 'java-lang'
+    id "org.jetbrains.kotlin.jvm" version "1.1.1"
+}
+
+model {
+    components {
+        main(JvmLibrarySpec)
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:1.1.1"
+    compile group: 'io.javaslang', name: 'javaslang', version: '2.1.0-alpha'
+    testCompile 'junit:junit:4.12'
+}
