@@ -74,14 +74,14 @@ A Javaslang Set can be converted to a Kotlin `MutableSet`:
 
 A Kotlin `Set` can be converted to a Javaslang `Set`:
 ```kotlin
-    val jsList = listOf(1, 2, 3).toJsSet()
+    val jsList = setOf(1, 2, 3).toJsSet()
 ```
 
 #### Map
 Ad-hoc Javaslang maps can be created as follows:
 ```kotlin
     val hashSet = hashMap(1 to 1, 2 to 2, 3 to 3)
-    val linkedHashMap = linkedHashMaphashMap(1 to "none", 2 to "a couple", 3 to "a lot")
+    val linkedHashMap = linkedHashMap(1 to "none", 2 to "a couple", 3 to "a lot")
     val treeMap = treeMap("this string" to 1, "is less than" to 2, "that string" to 3)
 ```
 > NOTE: keys in a TreeMap must be Comparable
