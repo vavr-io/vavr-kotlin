@@ -4,8 +4,6 @@
  * /___/\_/  \_/\____/\_/  \_/\__\/__/\__\_/  \_//  \__/\_____/   Licensed under the Apache License, Version 2.0
  */
 
-@file:Suppress("unused")
-
 package javaslang.kotlin
 
 import javaslang.Value
