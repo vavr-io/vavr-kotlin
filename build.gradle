@@ -1,7 +1,7 @@
 plugins {
     id 'jvm-component'
     id 'java-lang'
-    id "org.jetbrains.kotlin.jvm" version "1.1.1"
+    id 'org.jetbrains.kotlin.jvm' version '1.1.1'
 }
 
 model {
@@ -15,7 +15,8 @@ repositories {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib:1.1.1"
-    compile group: 'io.javaslang', name: 'javaslang', version: '2.1.0-alpha'
-    testCompile 'junit:junit:4.12'
+    compile([group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: '1.1.1'],
+            [group: 'io.javaslang', name: 'javaslang', version: '2.1.0-alpha']
+    )
+    testCompile([group: 'junit', name: 'junit', version: '4.12'])
 }
