@@ -59,6 +59,12 @@ fun <T> Array<T>.toVavrStream():
         Stream<T> = Stream.ofAll(this.asIterable())
 
 /**
+ * Converts a Kotlin Sequence into a Stream
+ */
+fun <T> Sequence<T>.toVavrStream():
+        Stream<T> = Stream.ofAll(this.asIterable())
+
+/**
  * Converts a Kotlin Map into a Vavr Map
  */
 fun <K, V> kotlin.collections.Map<K, V>.toVavrMap():
