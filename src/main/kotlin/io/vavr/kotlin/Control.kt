@@ -103,6 +103,12 @@ fun <T1, T2> Iterable<Validation<Seq<T1>, T2>>.sequence():
  * @see Try.of
  */
 fun <A> `try`(f: () -> A):
+        Try<A> = Try(f)
+
+/**
+ * @see Try.of
+ */
+fun <A> Try(f: () -> A):
         Try<A> = Try.of(object : CheckedFunction0<A> {
             override fun apply(): A = f()
         })
