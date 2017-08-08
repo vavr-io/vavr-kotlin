@@ -1,19 +1,20 @@
-/*     / \____  _    _  ____   ______  / \ ____  __    _______
- *    /  /    \/ \  / \/    \ /  /\__\/  //    \/  \  //  /\__\   JΛVΛSLΛNG
- *  _/  /  /\  \  \/  /  /\  \\__\\  \  //  /\  \ /\\/ \ /__\ \   Copyright 2014-2017 Javaslang, http://javaslang.io
- * /___/\_/  \_/\____/\_/  \_/\__\/__/\__\_/  \_//  \__/\_____/   Licensed under the Apache License, Version 2.0
+/*                        __    __  __  __    __  ___
+ *                       \  \  /  /    \  \  /  /  __/
+ *                        \  \/  /  /\  \  \/  /  /
+ *                         \____/__/  \__\____/__/.ɪᴏ
+ * ᶜᵒᵖʸʳᶦᵍʰᵗ ᵇʸ ᵛᵃᵛʳ ⁻ ˡᶦᶜᵉⁿˢᵉᵈ ᵘⁿᵈᵉʳ ᵗʰᵉ ᵃᵖᵃᶜʰᵉ ˡᶦᶜᵉⁿˢᵉ ᵛᵉʳˢᶦᵒⁿ ᵗʷᵒ ᵈᵒᵗ ᶻᵉʳᵒ
  */
+package io.vavr.kotlin
 
-package javaslang.kotlin
-
-import javaslang.collection.List
-import javaslang.collection.Seq
-import javaslang.control.Either
-import javaslang.control.Option
-import javaslang.control.Option.none
-import javaslang.control.Option.some
-import javaslang.control.Try
-import javaslang.control.Validation
+import io.vavr.CheckedFunction0
+import io.vavr.collection.List
+import io.vavr.collection.Seq
+import io.vavr.control.Either
+import io.vavr.control.Option
+import io.vavr.control.Option.none
+import io.vavr.control.Option.some
+import io.vavr.control.Try
+import io.vavr.control.Validation
 
 /**
  * Constructors and Kotlin collection extensions for Option, Try, Validation and Either
@@ -95,14 +96,16 @@ fun <A, B> Either<A, B>.validation():
 /**
  * @see Validation.sequence
  */
-fun <T1, T2> Iterable<Validation<List<T1>, T2>>.sequence():
-        Validation<List<T1>, Seq<T2>> = Validation.sequence(this)
+fun <T1, T2> Iterable<Validation<Seq<T1>, T2>>.sequence():
+        Validation<Seq<T1>, Seq<T2>> = Validation.sequence(this)
 
 /**
  * @see Try.of
  */
 fun <A> `try`(f: () -> A):
-        Try<A> = Try.of(f)
+        Try<A> = Try.of(object : CheckedFunction0<A> {
+            override fun apply(): A = f()
+        })
 
 /**
  * @see Try.success

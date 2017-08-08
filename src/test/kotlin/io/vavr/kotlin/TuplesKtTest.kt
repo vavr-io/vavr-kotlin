@@ -1,4 +1,4 @@
-package javaslang.kotlin
+package io.vavr.kotlin
 
 import org.junit.Test
 

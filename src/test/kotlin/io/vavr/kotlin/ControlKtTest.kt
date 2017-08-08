@@ -1,8 +1,7 @@
-package javaslang.kotlin
+package io.vavr.kotlin
 
+import org.junit.Assert.assertTrue
 import org.junit.Test
-
-import org.junit.Assert.*
 
 class ControlKtTest {
     @Test
@@ -66,5 +65,11 @@ class ControlKtTest {
 
     @Test
     fun sequence2() {
+    }
+
+    @Test
+    fun trying() {
+        assertTrue(`try` { throw RuntimeException() }.isFailure)
+        assertTrue(`try` { "ok" }.isSuccess)
     }
 }
