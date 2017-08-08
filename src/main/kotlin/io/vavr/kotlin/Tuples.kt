@@ -128,3 +128,12 @@ fun <T1, T2, T3, T4, T5, T6, T7> Iterable<Tuple7<T1, T2, T3, T4, T5, T6, T7>>.se
  */
 fun <T1, T2, T3, T4, T5, T6, T7, T8> Iterable<Tuple8<T1, T2, T3, T4, T5, T6, T7, T8>>.sequence():
         Tuple8<Seq<T1>, Seq<T2>, Seq<T3>, Seq<T4>, Seq<T5>, Seq<T6>, Seq<T7>, Seq<T8>> = Tuple.sequence8(this)
+
+operator fun <T1, T2> Tuple2<T1, T2>.component1(): T1 = this._1
+operator fun <T1, T2> Tuple2<T1, T2>.component2(): T2 = this._2
+
+operator fun <T1, T2, T3> Tuple3<T1, T2, T3>.component1(): T1 = this._1
+operator fun <T1, T2, T3> Tuple3<T1, T2, T3>.component2(): T2 = this._2
+operator fun <T1, T2, T3> Tuple3<T1, T2, T3>.component3(): T3 = this._3
+
+// TODO: define components for Tuple4-8
