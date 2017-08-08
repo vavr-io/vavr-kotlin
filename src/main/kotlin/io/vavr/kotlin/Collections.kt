@@ -8,6 +8,7 @@ package io.vavr.kotlin
 
 import io.vavr.Value
 import io.vavr.collection.List
+import io.vavr.collection.Map
 import io.vavr.collection.Stream
 
 /**
@@ -97,6 +98,12 @@ fun <K, V> linkedHashMap(vararg p: Pair<K, V>):
 fun <K : Comparable<K>, V> treeMap(vararg p: Pair<K, V>):
         io.vavr.collection.TreeMap<K, V> =
         io.vavr.collection.TreeMap.ofEntries(p.asIterable().map { it.tuple() })
+
+/**
+ * Returns the value associated with a key, or null if the key is not contained in the map.
+ */
+fun <K, V> Map<K, V>.getOrNull(key: K):
+        V? = this.getOrElse(key, null)
 
 /**
  * Converts a Kotlin Set into a Vavr Set
