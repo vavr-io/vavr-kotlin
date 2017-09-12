@@ -2,27 +2,29 @@ package io.vavr.kotlin
 
 import org.junit.Test
 
-import org.junit.Assert.*
-
 class CollectionsKtTest {
     @Test
     fun list() {
+        val list = list(1, 2, 3)
+        assert(list.size() == 3)
     }
 
     @Test
     fun toMutableList() {
+        val mutableList = list(1, 2, 3).toMutableList()
+        assert(mutableList.size == 3)
     }
 
     @Test
-    fun toJsList() {
-    }
-
-    @Test
-    fun toJsList1() {
+    fun toVavrList() {
+        val vavrList = listOf(1, 2, 3).toVavrList()
+        assert(vavrList.size() == 3)
     }
 
     @Test
     fun stream() {
+        val stream = stream(1, 2, 3)
+        assert(stream.size() == 3)
     }
 
     @Test
