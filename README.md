@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/vavr-io/vavr-kotlin.png)](https://travis-ci.org/vavr-io/vavr-kotlin)
+[![codecov](https://codecov.io/gh/vavr-io/vavr-kotlin/branch/master/graph/badge.svg)](https://codecov.io/gh/vavr-io/vavr-kotlin)
+
 # Vavr Kotlin
 
 Vavr Kotlin is a set of Kotlin niceties for the [Vavr](http://vavr.io) functional collections library:
