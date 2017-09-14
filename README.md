@@ -17,7 +17,7 @@ import io.vavr.kotlin.*
 
 Profit:
 ```kotlin
-val optionOf: Option<Seq<Int>> = list(option(1), option(2), option(null)).sequence()
+val optionOf: Option<Seq<Int>> = list(some(1), some(2), none()).sequence()
 ```
 
 See the [Wiki](https://github.com/vavr-io/vavr-kotlin/wiki) for detailed API.

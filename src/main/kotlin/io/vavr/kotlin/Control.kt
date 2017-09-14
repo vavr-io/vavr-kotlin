@@ -20,7 +20,6 @@
 package io.vavr.kotlin
 
 import io.vavr.CheckedFunction0
-import io.vavr.collection.List
 import io.vavr.collection.Seq
 import io.vavr.control.Either
 import io.vavr.control.Option
