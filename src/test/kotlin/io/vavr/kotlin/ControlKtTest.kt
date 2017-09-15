@@ -12,6 +12,18 @@ class ControlKtTest {
     // -- Option
 
     @Test
+    fun createFromNull() {
+        val opt = null.option()
+        assert(opt.isEmpty)
+    }
+
+    @Test
+    fun createFromNonNull() {
+        val opt = 1.option()
+        assert(opt.get() == 1)
+    }
+
+    @Test
     fun createSomeNull() {
         val some = some(null)
         assert(some.isDefined)
