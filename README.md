@@ -1,3 +1,4 @@
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.vavr/vavr-kotlin/badge.png)](https://maven-badges.herokuapp.com/maven-central/io.vavr/vavr-kotlin)
 [![Build Status](https://travis-ci.org/vavr-io/vavr-kotlin.png)](https://travis-ci.org/vavr-io/vavr-kotlin)
 [![codecov](https://codecov.io/gh/vavr-io/vavr-kotlin/branch/master/graph/badge.svg)](https://codecov.io/gh/vavr-io/vavr-kotlin)
 
