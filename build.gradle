@@ -18,15 +18,18 @@ compileKotlin {
 }
 
 group = 'io.vavr'
-version = '0.9.2'
+version = '1.0.0-SNAPSHOT'
 
 repositories {
-    jcenter()
+    mavenCentral()
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots"
+    }
 }
 
 dependencies {
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jre8', version: '1.1.4-3'
-    compile group: 'io.vavr', name: 'vavr', version: '0.9.2'
+    compile group: 'io.vavr', name: 'vavr', version: '1.0.0-SNAPSHOT'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
