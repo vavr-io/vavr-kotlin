@@ -50,7 +50,13 @@ codeCoverageReport.dependsOn {
     project.test
 }
 
-
+jar {
+    manifest {
+        attributes(
+                'Automatic-Module-Name': 'io.vavr.kotlin'
+        )
+    }
+}
 
 modifyPom {
     project {
