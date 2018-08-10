@@ -94,54 +94,6 @@ fun <T1, T2> Tuple2<T1, T2>.pair():
 fun <T1, T2> Map.Entry<T1, T2>.tuple():
         Tuple2<T1, T2> = Tuple.of(this.key, this.value)
 
-/**
- * @see Tuple.sequence1
- */
-fun <T1> Iterable<Tuple1<T1>>.sequence():
-        Tuple1<Seq<T1>> = Tuple.sequence1(this)
-
-/**
- * @see Tuple.sequence2
- */
-fun <T1, T2> Iterable<Tuple2<T1, T2>>.sequence():
-        Tuple2<Seq<T1>, Seq<T2>> = Tuple.sequence2(this)
-
-/**
- * @see Tuple.sequence3
- */
-fun <T1, T2, T3> Iterable<Tuple3<T1, T2, T3>>.sequence():
-        Tuple3<Seq<T1>, Seq<T2>, Seq<T3>> = Tuple.sequence3(this)
-
-/**
- * @see Tuple.sequence4
- */
-fun <T1, T2, T3, T4> Iterable<Tuple4<T1, T2, T3, T4>>.sequence():
-        Tuple4<Seq<T1>, Seq<T2>, Seq<T3>, Seq<T4>> = Tuple.sequence4(this)
-
-/**
- * @see Tuple.sequence5
- */
-fun <T1, T2, T3, T4, T5> Iterable<Tuple5<T1, T2, T3, T4, T5>>.sequence():
-        Tuple5<Seq<T1>, Seq<T2>, Seq<T3>, Seq<T4>, Seq<T5>> = Tuple.sequence5(this)
-
-/**
- * @see Tuple.sequence6
- */
-fun <T1, T2, T3, T4, T5, T6> Iterable<Tuple6<T1, T2, T3, T4, T5, T6>>.sequence():
-        Tuple6<Seq<T1>, Seq<T2>, Seq<T3>, Seq<T4>, Seq<T5>, Seq<T6>> = Tuple.sequence6(this)
-
-/**
- * @see Tuple.sequence7
- */
-fun <T1, T2, T3, T4, T5, T6, T7> Iterable<Tuple7<T1, T2, T3, T4, T5, T6, T7>>.sequence():
-        Tuple7<Seq<T1>, Seq<T2>, Seq<T3>, Seq<T4>, Seq<T5>, Seq<T6>, Seq<T7>> = Tuple.sequence7(this)
-
-/**
- * @see Tuple.sequence8
- */
-fun <T1, T2, T3, T4, T5, T6, T7, T8> Iterable<Tuple8<T1, T2, T3, T4, T5, T6, T7, T8>>.sequence():
-        Tuple8<Seq<T1>, Seq<T2>, Seq<T3>, Seq<T4>, Seq<T5>, Seq<T6>, Seq<T7>, Seq<T8>> = Tuple.sequence8(this)
-
 operator fun <T1, T2> Tuple2<T1, T2>.component1(): T1 = this._1
 operator fun <T1, T2> Tuple2<T1, T2>.component2(): T2 = this._2
 
