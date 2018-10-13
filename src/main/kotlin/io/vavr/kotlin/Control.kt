@@ -20,6 +20,7 @@
 package io.vavr.kotlin
 
 import io.vavr.CheckedFunction0
+import io.vavr.Value
 import io.vavr.collection.Seq
 import io.vavr.control.Either
 import io.vavr.control.Option
@@ -73,6 +74,13 @@ fun <A> Boolean.option(a: () -> A):
 fun <T> Iterable<Option<T>>.sequence():
         Option<Seq<T>> = Option.sequence(this)
 
+/**
+ * Checks, this {@code Value} is not empty, i.e. if the underlying value
+ * is present.
+ *
+ * @return true, if underlying value is present, false otherwise.
+ */
+val <T> Value<T>.isNotEmpty get() = !this.isEmpty
 
 /**
  * @see Validation.invalid

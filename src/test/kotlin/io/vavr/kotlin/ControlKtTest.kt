@@ -72,6 +72,15 @@ class ControlKtTest {
         assert(x3.get().size() == 2)
     }
 
+    @Test
+    fun optionIsNotEmpty() {
+        val first: Option<Int?> = some(4)
+        assert(first.isNotEmpty)
+
+        val second: Option<Int?> = none()
+        assert(!second.isNotEmpty)
+    }
+
     // -- Try
 
     @Test
