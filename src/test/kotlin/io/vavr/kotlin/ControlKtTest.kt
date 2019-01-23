@@ -112,7 +112,7 @@ class ControlKtTest {
     fun createInvalid() {
         val v: Validation<Int, Float> = invalid(4)
         assert(v.isInvalid)
-        assert(v.errors.head() == 4)
+        assert(v.error == 4)
     }
 
     @Test
@@ -128,7 +128,7 @@ class ControlKtTest {
         val e: Either<Int, Float> = left(4)
         val v = e.validation()
         assert(v.isInvalid)
-        assert(v.errors.head() == 4)
+        assert(v.error == 4)
     }
 
     @Test
@@ -138,7 +138,7 @@ class ControlKtTest {
 
         val x1 = list(first, second).sequence()
         assert(x1.isInvalid)
-        assert(x1.errors.head().head() == "ooops")
+        assert(x1.error.head() == "ooops")
 
         val x2 = list(first).sequence()
         assert(x2.isValid)

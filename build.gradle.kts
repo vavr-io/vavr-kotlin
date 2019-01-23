@@ -8,7 +8,7 @@ plugins {
     maven
     jacoco
     id("com.bmuschko.nexus") version "2.3.1"
-    id("org.jetbrains.kotlin.jvm") version "1.1.4-3"
+    id("org.jetbrains.kotlin.jvm") version "1.3.11"
 }
 
 // https://guides.gradle.org/migrating-build-logic-from-groovy-to-kotlin/
@@ -21,7 +21,7 @@ plugins {
 //}
 
 group = "io.vavr"
-version = "1.0.0-SNAPSHOT"
+version = "0.9.3"
 
 repositories {
     mavenCentral()
@@ -31,8 +31,8 @@ repositories {
 }
 
 dependencies {
-    compile("org.jetbrains.kotlin:kotlin-stdlib-jre8:1.1.4-3")
-    compile("io.vavr:vavr:1.0.0-SNAPSHOT")
+    compile(kotlin("stdlib-jdk8"))
+    compile("io.vavr:vavr:0.9.3")
     testCompile("junit:junit:4.12")
 }
 
@@ -41,7 +41,7 @@ tasks {
     create<JacocoReport>("codeCoverageReport") {
         executionData(fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec"))
 
-        sourceSets(java.sourceSets["main"])
+        sourceSets(sourceSets["main"])
 
         reports {
             xml.isEnabled = true
@@ -58,11 +58,6 @@ tasks {
         kotlinOptions.jvmTarget = "1.8"
     }
 
-    getByName<Wrapper>("wrapper") {
-        distributionType = Wrapper.DistributionType.ALL
-        gradleVersion = "4.9"
-    }
-
     getByName<Jar>("jar") {
         manifest {
             attributes(mutableMapOf(
@@ -73,7 +68,7 @@ tasks {
 
 }
 
-val modifyPom : Closure<*> by ext
+val modifyPom : Closure<MavenPom> by ext
 
 modifyPom(closureOf<MavenPom> {
     project {
