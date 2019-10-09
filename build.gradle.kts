@@ -1,5 +1,4 @@
 import groovy.lang.Closure
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.net.URI
 
 plugins {
@@ -10,15 +9,6 @@ plugins {
     id("com.bmuschko.nexus") version "2.3.1"
     id("org.jetbrains.kotlin.jvm") version "1.3.11"
 }
-
-// https://guides.gradle.org/migrating-build-logic-from-groovy-to-kotlin/
-// The Kotlin DSL will not support model {} elements. This is part of the discontinued Gradle Software Model.
-//
-//model {
-//    components {
-//        main(JvmLibrarySpec)
-//    }
-//}
 
 group = "io.vavr"
 version = "1.0.0-SNAPSHOT"
@@ -54,18 +44,17 @@ tasks {
 
     }
 
-    getByName<KotlinCompile>("compileKotlin") {
+    compileKotlin {
         kotlinOptions.jvmTarget = "1.8"
     }
 
-    getByName<Jar>("jar") {
+    jar {
         manifest {
             attributes(mutableMapOf(
                     "Automatic-Module-Name" to "io.vavr.kotlin"
             ))
         }
     }
-
 }
 
 val modifyPom : Closure<MavenPom> by ext
