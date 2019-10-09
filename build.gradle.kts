@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "io.vavr"
-version = "1.0.0-SNAPSHOT"
+version = "0.10.2"
 
 repositories {
     mavenCentral()
@@ -22,7 +22,7 @@ repositories {
 
 dependencies {
     compile(kotlin("stdlib-jdk8"))
-    compile("io.vavr:vavr:1.0.0-SNAPSHOT")
+    compile("io.vavr:vavr:0.10.2")
     testCompile("junit:junit:4.12")
 }
 
