@@ -1,7 +1,6 @@
 package io.vavr.kotlin
 
 import io.vavr.*
-import io.vavr.collection.Seq
 import org.junit.Test
 
 class TuplesKtTest {
