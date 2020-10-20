@@ -68,6 +68,14 @@ fun <T> Array<T>.toVavrList():
     List<T> = List.ofAll(this.asIterable())
 
 /**
+ * Converts a Kotlin [Sequence] into a Vavr [List].
+ *
+ * @see List.ofAll
+ */
+fun <T> Sequence<T>.toVavrList():
+    List<T> = List.ofAll(this.asIterable())
+
+/**
  * Creates a Vavr [Stream] of the given elements.
  *
  * @see Stream.of
@@ -149,24 +157,38 @@ fun <K, V> Map<K, V>.getOrNull(key: K):
  *
  * @see HashSet.ofAll
  */
-fun <T> kotlin.collections.Set<T>.toVavrSet():
-    io.vavr.collection.Set<T> = io.vavr.collection.HashSet.ofAll(this)
+fun <T> hashSet(vararg t: T):
+    HashSet<T> = HashSet.ofAll(t.asIterable())
+
+/**
+ * Converts a Kotlin [Iterable] into a Vavr [Set]
+ *
+ * @see HashSet.ofAll
+ */
+fun <T> Iterable<T>.toVavrSet():
+    Set<T> = HashSet.ofAll(this)
 
 /**
  * Converts a Kotlin [Array] into a Vavr [Set].
  *
  * @see HashSet.ofAll
  */
-fun <T> io.vavr.collection.Set<T>.toMutableSet():
-    kotlin.collections.MutableSet<T> = this.toJavaSet().toMutableSet()
+fun <T> Array<T>.toVavrSet():
+    HashSet<T> = HashSet.ofAll(this.asIterable())
 
 /**
  * Converts a Kotlin [Sequence] into a Vavr [List].
  *
  * @see HashSet.ofAll
  */
-fun <T> hashSet(vararg t: T):
-    io.vavr.collection.HashSet<T> = io.vavr.collection.HashSet.ofAll(t.asIterable())
+fun <T> Sequence<T>.toVavrSet():
+    HashSet<T> = HashSet.ofAll(this.asIterable())
+
+/**
+ * Converts a Vavr [Set] into a Kotlin [MutableSet]
+ */
+fun <T> Set<T>.toMutableSet():
+    MutableSet<T> = this.toJavaSet().toMutableSet()
 
 /**
  * Creates a Vavr [LinkedHashSet] of the given elements.
@@ -175,6 +197,30 @@ fun <T> hashSet(vararg t: T):
  */
 fun <T> linkedHashSet(vararg t: T):
     LinkedHashSet<T> = LinkedHashSet.ofAll(t.asIterable())
+
+/**
+ * Converts a Kotlin [Iterable] into a Vavr [LinkedHashSet]
+ *
+ * @see LinkedHashSet.ofAll
+ */
+fun <T> Iterable<T>.toVavrLinkedHashSet():
+    LinkedHashSet<T> = LinkedHashSet.ofAll(this)
+
+/**
+ * Converts a Kotlin [Array] into a Vavr [LinkedHashSet].
+ *
+ * @see LinkedHashSet.ofAll
+ */
+fun <T> Array<T>.toVavrLinkedHashSet():
+    LinkedHashSet<T> = LinkedHashSet.ofAll(this.asIterable())
+
+/**
+ * Converts a Kotlin [Sequence] into a Vavr [LinkedHashSet].
+ *
+ * @see LinkedHashSet.ofAll
+ */
+fun <T> Sequence<T>.toVavrLinkedHashSet():
+    LinkedHashSet<T> = LinkedHashSet.ofAll(this.asIterable())
 
 /**
  * Creates a Vavr [TreeSet] from a series of Kotlin [Pair]s.
