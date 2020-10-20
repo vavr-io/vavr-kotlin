@@ -20,9 +20,16 @@
 package io.vavr.kotlin
 
 import io.vavr.Value
+import io.vavr.collection.HashMap
+import io.vavr.collection.HashSet
+import io.vavr.collection.LinkedHashMap
+import io.vavr.collection.LinkedHashSet
 import io.vavr.collection.List
 import io.vavr.collection.Map
+import io.vavr.collection.Set
 import io.vavr.collection.Stream
+import io.vavr.collection.TreeMap
+import io.vavr.collection.TreeSet
 
 /**
  * Constructors and Kotlin collection converters for the Vavr collection values
@@ -98,27 +105,25 @@ fun <T> Sequence<T>.toVavrStream():
  * @see HashMap.ofAll
  */
 fun <K, V> kotlin.collections.Map<K, V>.toVavrMap():
-    io.vavr.collection.Map<K, V> = io.vavr.collection.HashMap.ofAll(this)
+    Map<K, V> = HashMap.ofAll(this)
 
 /**
  * Converts a Vavr [Map] to a Kotlin [MutableMap].
  */
-fun <K, V> io.vavr.collection.Map<K, V>.toMutableMap():
-    kotlin.collections.MutableMap<K, V> = this.toJavaMap().toMutableMap()
+fun <K, V> Map<K, V>.toMutableMap():
+    MutableMap<K, V> = this.toJavaMap().toMutableMap()
 
 /**
  * Creates a Vavr [HashMap] from a series of Kotlin [Pair]s.
  */
 fun <K, V> hashMap(vararg p: Pair<K, V>):
-    io.vavr.collection.HashMap<K, V> =
-        io.vavr.collection.HashMap.ofEntries(p.asIterable().map { it.tuple() })
+    HashMap<K, V> = HashMap.ofEntries(p.asIterable().map { it.tuple() })
 
 /**
  * Creates a Vavr [LinkedHashMap] from a series of Kotlin [Pair]s.
  */
 fun <K, V> linkedHashMap(vararg p: Pair<K, V>):
-    io.vavr.collection.LinkedHashMap<K, V> =
-        io.vavr.collection.LinkedHashMap.ofEntries(p.asIterable().map { it.tuple() })
+    LinkedHashMap<K, V> = LinkedHashMap.ofEntries(p.asIterable().map { it.tuple() })
 
 /**
  * Creates a Vavr [TreeMap] from a series of Kotlin [Pair]s.
@@ -129,8 +134,7 @@ fun <K, V> linkedHashMap(vararg p: Pair<K, V>):
  * @see TreeMap.ofEntries
  */
 fun <K : Comparable<K>, V> treeMap(vararg p: Pair<K, V>):
-    io.vavr.collection.TreeMap<K, V> =
-        io.vavr.collection.TreeMap.ofEntries(p.asIterable().map { it.tuple() })
+    TreeMap<K, V> = TreeMap.ofEntries(p.asIterable().map { it.tuple() })
 
 /**
  * Returns the value associated with a key, or null if the key is not contained in the [Map].
@@ -170,7 +174,7 @@ fun <T> hashSet(vararg t: T):
  * @see LinkedHashSet.ofAll
  */
 fun <T> linkedHashSet(vararg t: T):
-    io.vavr.collection.LinkedHashSet<T> = io.vavr.collection.LinkedHashSet.ofAll(t.asIterable())
+    LinkedHashSet<T> = LinkedHashSet.ofAll(t.asIterable())
 
 /**
  * Creates a Vavr [TreeSet] from a series of Kotlin [Pair]s.
@@ -181,5 +185,4 @@ fun <T> linkedHashSet(vararg t: T):
  * @see TreeSet.ofAll
  */
 fun <T : Comparable<T>> treeSet(vararg t: T):
-    io.vavr.collection.TreeSet<T> =
-        io.vavr.collection.TreeSet.ofAll(t.asIterable())
+    TreeSet<T> = TreeSet.ofAll(t.asIterable())
