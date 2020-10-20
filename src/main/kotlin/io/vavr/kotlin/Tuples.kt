@@ -22,7 +22,7 @@ package io.vavr.kotlin
 import io.vavr.*
 
 /**
- * Constructors and sequence() extensions for the Vavr Tuple
+ * Constructors and sequence() extensions for the Vavr Tuple.
  *
  * @author Alex Zuzin (github.com/zvozin)
  */
@@ -76,13 +76,15 @@ fun <T1, T2, T3, T4, T5, T6, T7, T8> tuple(t1: T1, t2: T2, t3: T3, t4: T4, t5: T
     Tuple8<T1, T2, T3, T4, T5, T6, T7, T8> = Tuple.of(t1, t2, t3, t4, t5, t6, t7, t8)
 
 /**
- * Creates a Tuple out of a Kotlin Pair
+ * Creates a [Tuple] out of a Kotlin [Pair].
+ *
+ * @see Tuple.of
  */
 fun <T1, T2> Pair<T1, T2>.tuple():
     Tuple2<T1, T2> = Tuple.of(this.first, this.second)
 
 /**
- * Creates a Kotlin Pair out of a Tuple
+ * Creates a Kotlin [Pair] out of a [Tuple].
  */
 fun <T1, T2> Tuple2<T1, T2>.pair():
     Pair<T1, T2> = Pair(this._1, this._2)
