@@ -7,6 +7,7 @@ plugins {
     maven
     jacoco
     id("com.bmuschko.nexus") version "2.3.1"
+    id("com.diffplug.spotless") version "5.6.1"
     id("org.jetbrains.kotlin.jvm") version "1.3.11"
 }
 
@@ -45,6 +46,15 @@ tasks {
 
     compileKotlin {
         kotlinOptions.jvmTarget = "1.8"
+    }
+
+    spotless {
+        kotlin {
+            ktlint().userData(mapOf("disabled_rules" to "no-wildcard-imports"))
+        }
+        kotlinGradle {
+            ktlint().userData(mapOf("disabled_rules" to "no-wildcard-imports"))
+        }
     }
 
     jar {
