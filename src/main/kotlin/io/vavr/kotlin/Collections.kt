@@ -177,7 +177,7 @@ fun <T> Array<T>.toVavrSet():
     HashSet<T> = HashSet.ofAll(this.asIterable())
 
 /**
- * Converts a Kotlin [Sequence] into a Vavr [List].
+ * Converts a Kotlin [Sequence] into a Vavr [Set].
  *
  * @see HashSet.ofAll
  */
@@ -223,7 +223,7 @@ fun <T> Sequence<T>.toVavrLinkedHashSet():
     LinkedHashSet<T> = LinkedHashSet.ofAll(this.asIterable())
 
 /**
- * Creates a Vavr [TreeSet] from a series of Kotlin [Pair]s.
+ * Creates a Vavr [TreeSet] of the given elements.
  *
  * Note that the elements of a [TreeSet] must be [Comparable].
  *
