@@ -7,6 +7,7 @@ plugins {
     maven
     jacoco
     id("com.bmuschko.nexus") version "2.3.1"
+    id("com.diffplug.spotless") version "5.6.1"
     id("org.jetbrains.kotlin.jvm") version "1.3.11"
 }
 
@@ -41,63 +42,73 @@ tasks {
         }
 
         dependsOn(project.getTasksByName("test", false))
-
     }
 
     compileKotlin {
         kotlinOptions.jvmTarget = "1.8"
     }
 
+    spotless {
+        kotlin {
+            ktlint().userData(mapOf("disabled_rules" to "no-wildcard-imports"))
+        }
+        kotlinGradle {
+            ktlint().userData(mapOf("disabled_rules" to "no-wildcard-imports"))
+        }
+    }
+
     jar {
         manifest {
-            attributes(mutableMapOf(
+            attributes(
+                mutableMapOf(
                     "Automatic-Module-Name" to "io.vavr.kotlin"
-            ))
+                )
+            )
         }
     }
 }
 
-val modifyPom : Closure<MavenPom> by ext
+val modifyPom: Closure<MavenPom> by ext
 
-modifyPom(closureOf<MavenPom> {
-    project {
-        withGroovyBuilder {
-            "name"("Vavr Kotlin")
-            "description"("Vavr integration for Kotlin")
-            "url"("http://vavr.io")
-            "inceptionYear"("2017")
+modifyPom(
+    closureOf<MavenPom> {
+        project {
+            withGroovyBuilder {
+                "name"("Vavr Kotlin")
+                "description"("Vavr integration for Kotlin")
+                "url"("http://vavr.io")
+                "inceptionYear"("2017")
 
-            "scm" {
-                "connection"("scm:git:git@github.com:vavr-io/vavr-kotlin.git")
-                "developerConnection"("scm:git:git@github.com:vavr-io/vavr-kotlin.git")
-                "url"("git@github.com:vavr-io/vavr-kotlin.git")
-            }
+                "scm" {
+                    "connection"("scm:git:git@github.com:vavr-io/vavr-kotlin.git")
+                    "developerConnection"("scm:git:git@github.com:vavr-io/vavr-kotlin.git")
+                    "url"("git@github.com:vavr-io/vavr-kotlin.git")
+                }
 
-            "licenses" {
-                "license" {
-                    "name"("The Apache Software License, Version 2.0")
-                    "url"("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                "licenses" {
+                    "license" {
+                        "name"("The Apache Software License, Version 2.0")
+                        "url"("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
+                }
+
+                "developers" {
+                    "developer" {
+                        "id"("zvozin")
+                        "name"("Alex Zuzin")
+                        "url"("https://github.com/zvozin")
+                    }
+                    "developer" {
+                        "id"("ruslansennov")
+                        "name"("Ruslan Sennov")
+                        "email"("ruslan.sennov@gmail.com")
+                    }
                 }
             }
-
-            "developers" {
-                "developer" {
-                    "id"("zvozin")
-                    "name"("Alex Zuzin")
-                    "url"("https://github.com/zvozin")
-                }
-                "developer" {
-                    "id"("ruslansennov")
-                    "name"("Ruslan Sennov")
-                    "email"("ruslan.sennov@gmail.com")
-                }
-            }
-
         }
     }
-})
+)
 
 nexus {
     sign = !version.toString().endsWith("SNAPSHOT")
 }
-

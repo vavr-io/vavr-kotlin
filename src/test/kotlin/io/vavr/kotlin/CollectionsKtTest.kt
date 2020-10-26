@@ -28,6 +28,12 @@ class CollectionsKtTest {
     }
 
     @Test
+    fun toVavrList3() {
+        val vavrStream: io.vavr.collection.List<Int> = generateSequence(1, { i -> i + 1 }).take(3).toVavrList()
+        assert(vavrStream.size() == 3)
+    }
+
+    @Test
     fun stream() {
         val stream: io.vavr.collection.Stream<Int> = stream(1, 2, 3)
         assert(stream.size() == 3)
@@ -88,6 +94,18 @@ class CollectionsKtTest {
     }
 
     @Test
+    fun toVavrSet2() {
+        val vavrSet: io.vavr.collection.Set<Int> = arrayOf(1, 2, 3).toVavrSet()
+        assert(vavrSet.size() == 3)
+    }
+
+    @Test
+    fun toVavrSet3() {
+        val vavrSet: io.vavr.collection.Set<Int> = generateSequence(1, { i -> i + 1 }).take(3).toVavrSet()
+        assert(vavrSet.size() == 3)
+    }
+
+    @Test
     fun toMutableSet() {
         val mutableSet: Set<Int> = io.vavr.collection.HashSet.of(1, 2, 3).toMutableSet()
         assert(mutableSet.size == 3)
@@ -102,6 +120,24 @@ class CollectionsKtTest {
     @Test
     fun linkedHashSet() {
         val vavrSet: io.vavr.collection.LinkedHashSet<Int> = linkedHashSet(1, 2, 3)
+        assert(vavrSet.size() == 3)
+    }
+
+    @Test
+    fun toVavrLinkedHashSet() {
+        val vavrSet: io.vavr.collection.LinkedHashSet<Int> = hashSetOf(1, 2, 3).toVavrLinkedHashSet()
+        assert(vavrSet.size() == 3)
+    }
+
+    @Test
+    fun toVavrLinkedHashSet2() {
+        val vavrSet: io.vavr.collection.LinkedHashSet<Int> = arrayOf(1, 2, 3).toVavrLinkedHashSet()
+        assert(vavrSet.size() == 3)
+    }
+
+    @Test
+    fun toVavrLinkedHashSet3() {
+        val vavrSet: io.vavr.collection.LinkedHashSet<Int> = generateSequence(1, { i -> i + 1 }).take(3).toVavrLinkedHashSet()
         assert(vavrSet.size() == 3)
     }
 

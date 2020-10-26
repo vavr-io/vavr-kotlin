@@ -45,13 +45,13 @@ class ControlKtTest {
     @Test
     fun createOptionFromFalse() {
         assert(false.option(1).isEmpty)
-        assert(false.option{1}.isEmpty)
+        assert(false.option { 1 }.isEmpty)
     }
 
     @Test
     fun createOptionFromTrue() {
         assert(true.option(1).isDefined)
-        assert(true.option{1}.isDefined)
+        assert(true.option { 1 }.isDefined)
     }
 
     @Test
@@ -89,7 +89,7 @@ class ControlKtTest {
 
     @Test
     fun trySequence() {
-        val x: Try<Seq<Int>> = list(`try`{1}, `try`{1}).sequence()
+        val x: Try<Seq<Int>> = list(`try` { 1 }, `try` { 1 }).sequence()
         assert(x.get().size() == 2)
     }
 
